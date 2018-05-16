@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?9ukd8d">
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+    <link rel="icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#f2e6e6">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#f2e6e6">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Sadik Ekin Ozbay" />
+<meta name="description" content="We will learn how to define variables and how to use operators in Swift programming language." />
+<meta name="keywords" content="swift, variables, operators">
+<meta property="og:site_name" content="Tükürdüklerim"/>
+<meta property="og:title" content="Variables and Operators in Swift"/>
+<meta property="og:description" content="We will learn how to define variables and how to use operators in Swift programming language."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/Swift - Variables - Operators.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-05-13 10:20:00+03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/sadik-ekin-ozbay.html">
+<meta property="article:section" content="Swift"/>
+<meta property="article:tag" content="swift"/>
+<meta property="article:tag" content="variables"/>
+<meta property="article:tag" content="operators"/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o">
+
+  <title>Tükürdüklerim &ndash; Variables and Operators in Swift</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o" alt="Sadik Ekin Ozbay" title="Sadik Ekin Ozbay">
+      </a>
+      <h1><a href="http://localhost:8000">Sadik Ekin Ozbay</a></h1>
+
+<p>Software Engineer</p>
+
+      <ul class="social">
+        <li><a class="" href="https://github.com/sadikekin" target="_blank"><i class="socicon-github"></i></a></li>
+        <li><a class="" href="https://www.hackerrank.com/Ozbaysa" target="_blank"><i class="socicon-hackerrank"></i></a></li>
+        <li><a class="" href="https://www.linkedin.com/in/sadık-ekin-özbay/" target="_blank"><i class="socicon-linkedin"></i></a></li>
+        <li><a class="" href="https://www.quora.com/profile/Sadık-Ekin-Özbay" target="_blank"><i class="socicon-quora"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://localhost:8000">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+    <h1 id="Swift - Variables - Operators">Variables and Operators in Swift</h1>
+    <p>
+          Posted on 13 May, 2018 in <a href="http://localhost:8000/category/swift.html">Swift</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Hello there,</p>
+<p>In this part of Swift lecture, we will touch at variables and operators. So let's get down with the business.</p>
+<h2>Variables</h2>
+<p>Let's look at the following code.</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">itIsTen</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">var</span> <span class="nv">thisIsAlsoTen</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
+</pre></div>
+
+
+<p>We have 2 different type of variables. The 'let' one is constant. Therefore we would get an error if we do the following code. Always use <strong>let</strong> if it is possible.</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">constantTen</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="n">constantTen</span>  <span class="p">=</span> <span class="mi">5</span>
+<span class="c1">// We get following error</span>
+<span class="c1">// error: cannot assign to value: &#39;constantTen&#39; is a &#39;let&#39; constant</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">notConstantTen</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="n">notConstantTen</span> <span class="p">=</span> <span class="mi">5</span>
+<span class="c1">// Perfectly fine</span>
+</pre></div>
+
+
+<p>Swift is type safe. That means boolean stays boolean, integer stays integer. Hence, we use <strong>let/var variableName : variableType = value</strong> formula for defining a variable.</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">notConstantInt</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">var</span> <span class="nv">notConstantBool</span> <span class="p">:</span> <span class="nb">Bool</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="kd">var</span> <span class="nv">notConstantDouble</span> <span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">3.14</span>
+<span class="kd">var</span> <span class="nv">notConstantString</span> <span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Hello There, General Kenobi&quot;</span>
+</pre></div>
+
+
+<p>In Swift, we can assign <strong>nil</strong> to a variable. It means it has nothing. Do not confuse with zero. It is an integer. However <strong>nil</strong> means empty. We just need to add <strong>?</strong> to variable type.</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">canBeNilInt</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+<span class="kd">var</span> <span class="nv">canNotBeNilInt</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="kc">nil</span> <span class="c1">// This line gets an error</span>
+
+<span class="c1">// We can unbox the ? with using if statement</span>
+<span class="k">if</span> <span class="n">canBeNilInt</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+  <span class="c1">// Go ahead. Now we are sure that canBeNilInt is not nil.</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Swift is smart enough to assume the variable type. So, typing the variable type is not mandatory.</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">notConstantInt</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">var</span> <span class="nv">notConstantBool</span>  <span class="p">=</span> <span class="kc">true</span>
+<span class="kd">var</span> <span class="nv">notConstantDouble</span> <span class="p">=</span> <span class="mf">3.14</span>
+<span class="kd">var</span> <span class="nv">notConstantString</span> <span class="p">=</span> <span class="s">&quot;Hello There, General Kenobi&quot;</span>
+<span class="c1">// Perfectly okay assignments</span>
+</pre></div>
+
+
+<h2>Operators</h2>
+<p>As with the other programming languages, we do have many operators to use in Swift.</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">constantEleven</span> <span class="p">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="nv">constantNine</span> <span class="p">=</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="nv">constantTwenty</span> <span class="p">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="kd">var</span> <span class="nv">notConstantFive</span> <span class="p">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="kd">var</span> <span class="nv">minusEleven</span> <span class="p">=</span> <span class="o">-</span><span class="n">constantEleven</span>
+
+<span class="kd">var</span> <span class="nv">notTrue</span> <span class="p">=</span>  <span class="o">!</span><span class="kc">true</span>
+
+<span class="kd">var</span> <span class="nv">bestSentenceEver</span> <span class="p">=</span> <span class="s">&quot;Hello there, &quot;</span> <span class="o">+</span> <span class="s">&quot; General Kenobi&quot;</span>
+
+<span class="kd">var</span> <span class="nv">reminderOfFive</span> <span class="p">=</span> <span class="mi">5</span> <span class="o">%</span> <span class="mi">2</span>
+
+<span class="kd">var</span> <span class="nv">notEqual</span> <span class="p">=</span> <span class="mi">5</span> <span class="o">!=</span> <span class="mi">5</span> <span class="c1">// Returns false</span>
+<span class="kd">var</span> <span class="nv">Equal</span> <span class="p">=</span> <span class="mi">5</span> <span class="p">==</span> <span class="mi">5</span>
+<span class="kd">var</span> <span class="nv">biggerEqual</span> <span class="p">=</span> <span class="mi">5</span> <span class="o">&gt;=</span> <span class="mi">5</span>
+<span class="kd">var</span> <span class="nv">smallerEqual</span> <span class="p">=</span> <span class="mi">5</span> <span class="o">&lt;=</span> <span class="mi">5</span>
+
+<span class="kd">let</span> <span class="nv">nullInt</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+<span class="kd">let</span> <span class="nv">fiveOrTen</span> <span class="p">=</span> <span class="p">(</span><span class="n">nullInt</span> <span class="p">==</span> <span class="kc">nil</span> <span class="p">?</span> <span class="mi">5</span> <span class="p">:</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// Since nullInt is nil, it returns 5.</span>
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/swift.html">swift</a>
+      <a href="http://localhost:8000/tag/variables.html">variables</a>
+      <a href="http://localhost:8000/tag/operators.html">operators</a>
+    </p>
+  </div>
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sadikekin-2';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+</article>
+
+    <footer>
+<p>&copy; Sadik Ekin Ozbay 2018</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tükürdüklerim ",
+  "url" : "http://localhost:8000",
+  "image": "https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o",
+  "description": "Sadik Ekin Ozbay's Thoughts and Writings"
+}
+</script>
+</body>
+</html>
