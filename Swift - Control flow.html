@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?9ukd8d">
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+    <link rel="icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#f2e6e6">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#f2e6e6">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Sadik Ekin Ozbay" />
+<meta name="description" content="We will learn how to use control flow in Swift programming language." />
+<meta name="keywords" content="swift, control flow">
+<meta property="og:site_name" content="Tükürdüklerim"/>
+<meta property="og:title" content="Control Flow in Swift"/>
+<meta property="og:description" content="We will learn how to use control flow in Swift programming language."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000/Swift - Control flow.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-05-17 10:01:00+03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://localhost:8000/author/sadik-ekin-ozbay.html">
+<meta property="article:section" content="Swift"/>
+<meta property="article:tag" content="swift"/>
+<meta property="article:tag" content="control flow"/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o">
+
+  <title>Tükürdüklerim &ndash; Control Flow in Swift</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o" alt="Sadik Ekin Ozbay" title="Sadik Ekin Ozbay">
+      </a>
+      <h1><a href="http://localhost:8000">Sadik Ekin Ozbay</a></h1>
+
+<p>Software Engineer</p>
+
+      <ul class="social">
+        <li><a class="" href="https://github.com/sadikekin" target="_blank"><i class="socicon-github"></i></a></li>
+        <li><a class="" href="https://www.hackerrank.com/Ozbaysa" target="_blank"><i class="socicon-hackerrank"></i></a></li>
+        <li><a class="" href="https://www.linkedin.com/in/sadık-ekin-özbay/" target="_blank"><i class="socicon-linkedin"></i></a></li>
+        <li><a class="" href="https://www.quora.com/profile/Sadık-Ekin-Özbay" target="_blank"><i class="socicon-quora"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://localhost:8000">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+    <h1 id="Swift - Control flow">Control Flow in Swift</h1>
+    <p>
+          Posted on 17 May, 2018 in <a href="http://localhost:8000/category/swift.html">Swift</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Hello there,</p>
+<p>This content is about control flow in swift.</p>
+<h2>If - Else</h2>
+<p>If-else statement allows us to use conditional statements in Swift.</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">constantTen</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="k">if</span><span class="p">(</span><span class="n">constantTen</span> <span class="p">==</span> <span class="mi">10</span><span class="p">){</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Oh, I know. It is 10&quot;</span><span class="p">)</span> <span class="c1">// print function allows us to print to console.</span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;I am not quite sure about that number&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// As you can image, it will print &quot;Oh, I know. It is 10&quot; to console.</span>
+</pre></div>
+
+
+<h2>For loop</h2>
+<p>For loop in Swift allows us to go through each element in an array.</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">constantIntegerArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="c1">// Index starts from 0.</span>
+<span class="k">for</span> <span class="n">element</span> <span class="k">in</span> <span class="n">constantIntegerArray</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="c1">// prints each element to the console.</span>
+<span class="p">}</span>
+<span class="c1">// But I want to know the index of that element. The next example is just for you. The following loop acts as the loop in C++.</span>
+
+<span class="kd">let</span> <span class="nv">arraySize</span> <span class="p">=</span> <span class="n">constantIntegerArray</span><span class="p">.</span><span class="bp">count</span> <span class="c1">// count gives us the size of the array.</span>
+<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.&lt;</span><span class="n">arraySize</span> <span class="p">{</span> <span class="c1">// &quot;n..&lt;m&quot; is from n to m-1. &quot;n...m&quot; is from n to m.</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s"> - </span><span class="si">\(</span><span class="n">constantIntegerArray</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// \() allows us to break the string. Hence it allows us to write swift code inside of \()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>While loop</h2>
+<p>While loop in Swift allows us to run code blocks until the condition in while does not check.</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">constantIntegerArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="kd">var</span> <span class="nv">counter</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="n">constantIntegerArray</span><span class="p">.</span><span class="bp">count</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">constantIntegerArray</span><span class="p">[</span><span class="n">counter</span><span class="p">])</span> <span class="c1">// prints each element to the console.</span>
+  <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">// Do not forget to increment the counter. If we do not increment it, this while loop goes to infinity</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1>Some exercises</h1>
+<p>This exercise is taken from <a href="https://github.com/sadikekin/iOS-Lecture-2018-Spring-ITU/blob/master/Week%20One/week%201%20questions.pdf">here</a>. You can find more code examples in that repository, that I have covered in the iOS lecture.</p>
+<p>1- Print all numbers from 1 to 500, that is divisible by both 3 and 5.
+2- Print the number of decimal digits in an unsigned integer. For example, 9 has 1 digits. 123123 has 6 digits.</p>
+<p>We will solve those question. However, I highly recommend you to solve the question first. Instead of looking the solutions first.</p>
+<h1>Solutions</h1>
+<h2>One</h2>
+<div class="highlight"><pre><span></span><span class="c1">// Defining the integer</span>
+<span class="kd">let</span> <span class="nv">constantInteger</span> <span class="p">=</span> <span class="mi">500</span>
+
+<span class="c1">// Looping through from 1 to 500</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">500</span><span class="p">{</span>
+
+  <span class="c1">// Checking if the number is divisible by both 3 and 5</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">3</span> <span class="p">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">%</span><span class="mi">5</span> <span class="p">==</span> <span class="mi">0</span><span class="p">){</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Two</h2>
+<div class="highlight"><pre><span></span><span class="c1">// Defining the integer</span>
+<span class="kd">let</span> <span class="nv">constantInteger</span> <span class="p">=</span> <span class="mi">1000</span>
+
+<span class="kd">let</span> <span class="nv">stringVersionOfInteger</span> <span class="p">=</span> <span class="nb">String</span><span class="p">(</span><span class="n">constantInteger</span><span class="p">)</span> <span class="c1">// This line changes integer to string. 0 -&gt; &quot;0&quot;, 100 -&gt; &quot;100&quot;</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">stringVersionOfInteger</span><span class="p">.</span><span class="n">size</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://localhost:8000/tag/swift.html">swift</a>
+      <a href="http://localhost:8000/tag/control-flow.html">control flow</a>
+    </p>
+  </div>
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sadikekin-2';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+</article>
+
+    <footer>
+<p>&copy; Sadik Ekin Ozbay 2018</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tükürdüklerim ",
+  "url" : "http://localhost:8000",
+  "image": "https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o",
+  "description": "Sadik Ekin Ozbay's Thoughts and Writings"
+}
+</script>
+</body>
+</html>

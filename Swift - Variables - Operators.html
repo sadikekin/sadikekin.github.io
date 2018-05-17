@@ -105,17 +105,17 @@
 </pre></div>
 
 
-<p>We have 2 different type of variables. The 'let' one is constant. Therefore we would get an error if we do the following code. Always use <strong>let</strong> if it is possible.</p>
-<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">constantTen</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="n">constantTen</span>  <span class="p">=</span> <span class="mi">5</span>
-<span class="c1">// We get following error</span>
+<p>We have 2 different type of variables. The 'let' one is constant. Therefore we would get an error if we do the following code. However, we should always use <strong>let</strong> if it is possible.</p>
+<div class="highlight"><pre><span></span><span class="c1">// We get following error</span>
 <span class="c1">// error: cannot assign to value: &#39;constantTen&#39; is a &#39;let&#39; constant</span>
+<span class="kd">let</span> <span class="nv">constantTen</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="n">constantTen</span>  <span class="p">=</span> <span class="mi">5</span>
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">notConstantTen</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
+<div class="highlight"><pre><span></span><span class="c1">// Perfectly fine</span>
+<span class="kd">var</span> <span class="nv">notConstantTen</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
 <span class="n">notConstantTen</span> <span class="p">=</span> <span class="mi">5</span>
-<span class="c1">// Perfectly fine</span>
 </pre></div>
 
 
@@ -139,11 +139,11 @@
 
 
 <p>Swift is smart enough to assume the variable type. So, typing the variable type is not mandatory.</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nv">notConstantInt</span> <span class="p">=</span> <span class="mi">10</span>
+<div class="highlight"><pre><span></span><span class="c1">// Perfectly okay assignments</span>
+<span class="kd">var</span> <span class="nv">notConstantInt</span> <span class="p">=</span> <span class="mi">10</span>
 <span class="kd">var</span> <span class="nv">notConstantBool</span>  <span class="p">=</span> <span class="kc">true</span>
 <span class="kd">var</span> <span class="nv">notConstantDouble</span> <span class="p">=</span> <span class="mf">3.14</span>
 <span class="kd">var</span> <span class="nv">notConstantString</span> <span class="p">=</span> <span class="s">&quot;Hello There, General Kenobi&quot;</span>
-<span class="c1">// Perfectly okay assignments</span>
 </pre></div>
 
 
