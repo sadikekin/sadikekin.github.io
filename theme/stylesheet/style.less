@@ -122,19 +122,31 @@ main {
     font-size: .72em;
     padding: 14px 0 14px 0;
     border-bottom: @nav-border-color 1px solid;
+  }
 
+  nav, .translations {
     a {
       padding: 0 4px 0 4px;
+      border-left: @nav-border-color 1px solid;
       border-right: @nav-border-color 1px solid;
     }
 
     :first-child {
-      border-left: @nav-border-color 1px solid;
+      border-left: none;
+    }
+
+    :last-child {
+      border-right: none;
     }
   }
 
+  .neighbors {
+    margin: 4% 0% 4% 0%;
+    height: 20px;
+  }
+
   .pagination {
-    margin: 4% 8% 2% 8%;
+    margin: 4% 8% 4% 8%;
     height: 20px;
   }
 
@@ -155,6 +167,14 @@ main {
       p {
         color: @header-text-color;
         font-size: 0.86em;
+      }
+
+      .translations {
+        float: right;
+
+        .active {
+          font-weight: 600;
+        }
       }
     }
 
@@ -290,6 +310,16 @@ a.btn:hover {
   display: block;
 }
 
+.align-center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.float-left {
+  float: left;
+}
+
 .float-right {
   float: right;
 }
@@ -360,6 +390,10 @@ ul.social {
     background-color: @google-bg-color;
   }
 
+  a.sc-instagram {
+    background-color: @instagram-bg-color;
+  }
+
   a.sc-pinterest {
     background-color: @pinterest-bg-color;
   }
@@ -368,12 +402,20 @@ ul.social {
     background-color: @linkedin-bg-color;
   }
 
+  a.sc-medium {
+    background-color: @medium-bg-color;
+  }
+
   a.sc-rss {
     background-color: @rss-bg-color;
   }
 
   a.sc-stack-overflow {
     background-color: @stack-overflow-bg-color;
+  }
+
+  a.sc-tumblr {
+    background-color: @tumblr-bg-color;
   }
 
   a.sc-twitter {
@@ -399,6 +441,19 @@ ul.social {
   a.sc-soundcloud {
     background-color: @soundcloud-bg-color;
   }
+
+  a.sc-gitlab {
+    background-color: @gitlab-bg-color;
+  }
+
+  a.sc-xing {
+    background-color: @xing-bg-color;
+  }
+
+  a.sc-bitbucket {
+    background-color: @bitbucket-bg-color;
+  }
+
 }
 
 .ads-aside {

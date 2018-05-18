@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
   <link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?9ukd8d">
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
@@ -16,11 +21,6 @@
     <link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
     <link rel="icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
 
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#f2e6e6">
@@ -29,12 +29,15 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#f2e6e6">
 
 <meta name="author" content="Sadik Ekin Ozbay" />
 <meta name="description" content="We will learn how to use functions and closures in Swift programming language." />
 <meta name="keywords" content="swift, functions, closures">
+
 <meta property="og:site_name" content="Tükürdüklerim"/>
-<meta property="og:title" content="Control Flow in Swift"/>
+<meta property="og:title" content="Functions in Swift"/>
 <meta property="og:description" content="We will learn how to use functions and closures in Swift programming language."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://sadikekin.github.io/Swift - Functions - Closures.html"/>
@@ -48,16 +51,16 @@
 <meta property="article:tag" content="closures"/>
 <meta property="og:image" content="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o">
 
-  <title>Tükürdüklerim &ndash; Control Flow in Swift</title>
+  <title>Tükürdüklerim &ndash; Functions in Swift</title>
 
 </head>
 <body>
   <aside>
     <div>
-      <a href="index.html">
+      <a href="https://sadikekin.github.io">
         <img src="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o" alt="Sadik Ekin Ozbay" title="Sadik Ekin Ozbay">
       </a>
-      <h1><a href="index.html">Sadik Ekin Ozbay</a></h1>
+      <h1><a href="https://sadikekin.github.io">Sadik Ekin Ozbay</a></h1>
 
 <p>Software Engineer</p>
 
@@ -74,7 +77,7 @@
   <main>
 
     <nav>
-      <a href="index.html" >    Home
+      <a href="https://sadikekin.github.io">    Home
 </a>
 
       <a href="/archives.html">Archives</a>
@@ -86,7 +89,8 @@
 
 <article class="single">
   <header>
-    <h1 id="Swift - Functions - Closures">Control Flow in Swift</h1>
+      
+    <h1 id="Swift - Functions - Closures">Functions in Swift</h1>
     <p>
           Posted on 18 May, 2018 in <a href="https://sadikekin.github.io/category/swift.html">Swift</a>
 
@@ -97,7 +101,74 @@
 
   <div>
     <p>Hello there,</p>
-<p>This content is about control flow in swift.</p>
+<p>This content is about functions and closures in swift.</p>
+<h1>Functions</h1>
+<h2>Functions with no return value and no parameters</h2>
+<p>We use functions to generalize specific types of codes. Let's consider following example.</p>
+<div class="highlight"><pre><span></span><span class="c1">// We define a function here.</span>
+<span class="kd">func</span> <span class="nf">printHello</span><span class="p">()</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello there, General Kenobi&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Now we need to call our function.</span>
+<span class="n">printHello</span><span class="p">()</span> <span class="c1">// It will print &quot;Hello there, General Kenobi&quot;</span>
+</pre></div>
+
+
+<p>As we can see here, we need to define the function, then use it.</p>
+<h2>Functions with parameters</h2>
+<div class="highlight"><pre><span></span><span class="c1">// We define a function here with a parameter.</span>
+<span class="kd">func</span> <span class="nf">printHello</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello there, General </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Now we need to call our function.</span>
+<span class="n">printHello</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;Kenobi&quot;</span><span class="p">)</span> <span class="c1">// It will print &quot;Hello there, General Kenobi&quot;</span>
+<span class="n">printHello</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;Anakin&quot;</span><span class="p">)</span> <span class="c1">// It will print &quot;Hello there, General Anakin&quot;</span>
+</pre></div>
+
+
+<p>Swift has brilliant function parameter system. If we define the function as in the <em>function one</em> need to use <strong>printHello(name: "Kenobi")</strong> for  the function call. We have an underscore inside the function parameter in <em>function two</em>. It allows us to not to use parameter name. therefore, we use <strong>printHello("Kenobi")</strong>. finally we have <strong>withName</strong> tag inside the function <em>function three</em>. We call it by using <strong>printHello(withName: "Kenobi")</strong>.</p>
+<div class="highlight"><pre><span></span><span class="c1">// function one</span>
+<span class="c1">// We define a function here with a parameter.</span>
+<span class="kd">func</span> <span class="nf">printHello</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello there, General </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// function two</span>
+<span class="c1">// We define a function here with a parameter using underscore.</span>
+<span class="kd">func</span> <span class="nf">printHello</span><span class="p">(</span><span class="kc">_</span> <span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello there, General </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// function three</span>
+<span class="c1">// We define a function here with a parameter using .</span>
+<span class="kd">func</span> <span class="nf">printHello</span><span class="p">(</span><span class="n">withName</span> <span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello there, General </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>We can combine the function parameter system.</p>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">printHello</span><span class="p">(</span><span class="n">withName</span> <span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="kc">_</span> <span class="n">surname</span><span class="p">:</span> <span class="nb">String</span> <span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello there, General </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s"> </span><span class="si">\(</span><span class="n">surname</span><span class="si">)</span><span class="s"> - (Your age is </span><span class="si">\(</span><span class="n">age</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">printHello</span><span class="p">(</span><span class="n">withName</span><span class="p">:</span> <span class="s">&quot;Kenobi&quot;</span><span class="p">,</span> <span class="s">&quot;IDK&quot;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Functions with parameters and return value</h2>
+<p>Let's dive in the example</p>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span> <span class="n">BDyear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">currentYear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">currentYear</span> <span class="o">-</span> <span class="n">BDyear</span>
+<span class="p">}</span>
+<span class="c1">// Assigning the return value to the variable called jakesAge</span>
+<span class="kd">let</span> <span class="nv">jakesAge</span> <span class="p">=</span> <span class="n">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span><span class="p">:</span> <span class="mi">1993</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Jake your age is </span><span class="si">\(</span><span class="n">jakesAge</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h1>Closures</h1>
   </div>
   <div class="tag-cloud">
     <p>
@@ -110,6 +181,8 @@
 
 
 
+
+<!-- Disqus -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'sadikekin-2';
@@ -123,14 +196,14 @@
         Please enable JavaScript to view comments.
 
 </noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>
-<p>&copy; Sadik Ekin Ozbay 2018</p>
+<p>&copy;  2018</p>
 <p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
 </p>    </footer>
   </main>
-
 
 
 
@@ -145,5 +218,6 @@
   "description": "Sadik Ekin Ozbay's Thoughts and Writings"
 }
 </script>
+
 </body>
 </html>
