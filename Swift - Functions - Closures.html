@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/pygments/xcode.min.css">
+  <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/pygments/monokai.min.css">
   <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -101,7 +101,6 @@
 
   <div>
     <p>Hello there,</p>
-<p>This content is about functions and closures in swift.</p>
 <h1>Functions</h1>
 <h2>Functions with no return value and no parameters</h2>
 <p>We use functions to generalize specific types of codes. Let's consider following example.</p>
@@ -159,8 +158,8 @@
 
 <h2>Functions with parameters and return value</h2>
 <p>Let's dive in the example</p>
-<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span> <span class="n">BDyear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">currentYear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">currentYear</span> <span class="o">-</span> <span class="n">BDyear</span>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span> <span class="n">BdYear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">currentYear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">currentYear</span> <span class="o">-</span> <span class="n">BdYear</span>
 <span class="p">}</span>
 <span class="c1">// Assigning the return value to the variable called jakesAge</span>
 <span class="kd">let</span> <span class="nv">jakesAge</span> <span class="p">=</span> <span class="n">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span><span class="p">:</span> <span class="mi">1993</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span>
@@ -169,6 +168,48 @@
 
 
 <h1>Closures</h1>
+<p>Let us consider following example. We will building <strong>.sort(by: )</strong> function. We need to implement Foundation for using that function</p>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">sortOrder</span><span class="p">(</span><span class="kc">_</span> <span class="n">numberOne</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span>  <span class="n">numberTwo</span> <span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">numberOne</span> <span class="o">&lt;</span> <span class="n">numberTwo</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">sortedArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">].</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="n">sortOrder</span><span class="p">)</span>
+</pre></div>
+
+
+<p>sorted(by:) function takes a function argument. The function has 2 given parameters and boolean return value. We can define our closure in this way. However, there are better ways to type these. Let's look at them.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Instead of defining a function outside just for this sort function. We shall use closures to represent our function.</span>
+<span class="kd">let</span> <span class="nv">sortedArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">].</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="kc">_</span> <span class="n">numberOne</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">numberTwo</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="n">numberOne</span> <span class="o">&lt;</span> <span class="n">numberTwo</span>
+  <span class="p">})</span>
+</pre></div>
+
+
+<p>We made a huge mile stone by using closure instead of function. Nevertheless, we one clear way to represent our closure.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Swift knows that array contains integers. Therefore, we do not need to specify types of numberOne and numberTwo</span>
+<span class="c1">// Swift also knows that sorted(by: ) takes argument as (Integer, Integer) -&gt; Bool. Therefore we don&#39;t need to type return value</span>
+<span class="c1">// Swift allows us to use $0, $1, $2 ... for representing variables</span>
+<span class="kd">let</span> <span class="nv">sortedArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">].</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">&lt;</span> <span class="nv">$1</span><span class="p">})</span>
+</pre></div>
+
+
+<h1>Escaping</h1>
+<p>This topic is entertaining to implement.  We allow a function to have different endings.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Escaping allows us to continue from there somewhere else</span>
+<span class="kd">func</span> <span class="nf">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span> <span class="n">BdYear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">currentYear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">returnFunction</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+  <span class="n">returnFunction</span><span class="p">(</span><span class="n">currentYear</span> <span class="o">-</span> <span class="n">BdYear</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// In here we calculated returnedAge and continued from here.</span>
+<span class="n">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span><span class="p">:</span> <span class="mi">1996</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">returnedAge</span><span class="p">)</span> <span class="k">in</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;This age is came from another function. Plus your age is </span><span class="si">\(</span><span class="n">returnedAge</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// This is another function for closures</span>
+<span class="n">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span><span class="p">:</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">returnedAge</span><span class="p">)</span> <span class="k">in</span>
+  <span class="bp">print</span><span class="p">(</span><span class="s">&quot;I feel young. However, my age is (returnedAge)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
   </div>
   <div class="tag-cloud">
     <p>
