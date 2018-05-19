@@ -195,7 +195,7 @@
 
 <h1>Escaping</h1>
 <p>This topic is entertaining to implement.  We allow a function to have different endings.</p>
-<div class="highlight"><pre><span></span><span class="c1">// Escaping allows us to continue from there somewhere else</span>
+<div class="highlight"><pre><span></span><span class="c1">// Escaping allows us to continue from there in somewhere else</span>
 <span class="kd">func</span> <span class="nf">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span> <span class="n">BdYear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">currentYear</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">returnFunction</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
   <span class="n">returnFunction</span><span class="p">(</span><span class="n">currentYear</span> <span class="o">-</span> <span class="n">BdYear</span><span class="p">)</span>
 <span class="p">}</span>
@@ -208,6 +208,20 @@
 <span class="c1">// This is another function for closures</span>
 <span class="n">ageCalculator</span><span class="p">(</span><span class="n">withBirthdayYear</span><span class="p">:</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">returnedAge</span><span class="p">)</span> <span class="k">in</span>
   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;I feel young. However, my age is (returnedAge)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1>Some exercises</h1>
+<p>This exercise is taken from <a href="https://github.com/sadikekin/iOS-Lecture-2018-Spring-ITU/blob/master/Week%20Two/week%202%20questions.pdf">here</a>. You can find more code examples in that repository, that I have covered in the iOS lecture.</p>
+<ol>
+<li>Create a function that takes 2 double numbers and returns their sum</li>
+</ol>
+<p>We will solve those question. However, I highly recommend you to solve the question first. Instead of looking the solutions first.</p>
+<h1>Solutions</h1>
+<h2>One</h2>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">sumDoubles</span><span class="p">(</span><span class="n">withNumberOne</span> <span class="n">nOne</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="kc">_</span> <span class="n">nTwo</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">nOne</span> <span class="o">+</span> <span class="n">nTwo</span>
 <span class="p">}</span>
 </pre></div>
   </div>
