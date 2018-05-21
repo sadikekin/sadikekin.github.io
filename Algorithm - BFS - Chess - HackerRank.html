@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?9ukd8d">
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+    <link rel="icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#f2e6e6">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#f2e6e6">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#f2e6e6">
+
+<meta name="author" content="Sadik Ekin Ozbay" />
+<meta name="description" content="We will analyze Red Knight&#39;s Shortest Path problem from HackerRank" />
+<meta name="keywords" content="algorithm, bfs, chess, HackerRank">
+
+<meta property="og:site_name" content="Tükürdüklerim"/>
+<meta property="og:title" content="Red Knight&#39;s Shortest Path"/>
+<meta property="og:description" content="We will analyze Red Knight&#39;s Shortest Path problem from HackerRank"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://sadikekin.github.io/Algorithm - BFS - Chess - HackerRank.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-05-19 08:50:00+03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://sadikekin.github.io/author/sadik-ekin-ozbay.html">
+<meta property="article:section" content="Algorithm"/>
+<meta property="article:tag" content="algorithm"/>
+<meta property="article:tag" content="bfs"/>
+<meta property="article:tag" content="chess"/>
+<meta property="article:tag" content="HackerRank"/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o">
+
+  <title>Tükürdüklerim &ndash; Red Knight&#39;s Shortest Path</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://sadikekin.github.io">
+        <img src="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o" alt="Sadik Ekin Ozbay" title="Sadik Ekin Ozbay">
+      </a>
+      <h1><a href="https://sadikekin.github.io">Sadik Ekin Ozbay</a></h1>
+
+<p>Software Engineer</p>
+
+      <ul class="social">
+        <li><a class="" href="https://github.com/sadikekin" target="_blank"><i class="socicon-github"></i></a></li>
+        <li><a class="" href="https://www.hackerrank.com/Ozbaysa" target="_blank"><i class="socicon-hackerrank"></i></a></li>
+        <li><a class="" href="https://www.linkedin.com/in/sadık-ekin-özbay/" target="_blank"><i class="socicon-linkedin"></i></a></li>
+        <li><a class="" href="https://www.quora.com/profile/Sadık-Ekin-Özbay" target="_blank"><i class="socicon-quora"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://sadikekin.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="Algorithm - BFS - Chess - HackerRank">Red Knight's Shortest Path</h1>
+    <p>
+          Posted on 19 May, 2018 in <a href="https://sadikekin.github.io/category/algorithm.html">Algorithm</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Hello there,
+In this post, I will try to analyze <a href="https://www.hackerrank.com/challenges/red-knights-shortest-path/problem">Red Knight's Shortest Path problem</a> from <a href="https://www.hackerrank.com">HackerRank</a>
+Before moving on the solution. I would like to explain the vector and queue data structures, that I have used for solving this question. I have used C++ programming language for solving this question.</p>
+<h3>Vector</h3>
+<p>We can think vector as an array with more features. It comes with STL library in C++. Here some important information about the vector that we have used for solving this question. <br /> <br />
+<strong>Pushing back(myPreciousVector.push_back(x))</strong> : O(1) <br />
+<strong>Accessing(myPreciousVector[0])</strong> : O(1) <br /></p>
+<h3>Queue</h3>
+<p>The queue is a data structure. We can think it is basically a line. Elements inside the queue are ordered by their push-time. For example, let's assume we have a queue, that contains <em>1,3,2</em>. That means 1 came earlier than 3 and 2. 3 came earlier than 2. When we push that queue 4. It will go directly to the end(<em>1,3,2,4</em>). When we take from the queue, we will take the element in the front.  </p>
+<p align="center">
+<img src="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/02/Queue.png">
+</p>
+
+<p align="center">
+<a href="https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/"><em><b>Figure 1:</b> The representation of the queue </em></a>
+</p>
+
+<p>When we pop element, we always pop it from the front. When we push element, we always push it to the back. This is the nature of the queue. <br /> <br />
+<strong>Pushing(myPreciousQueue.push(x))</strong> : O(1) <br />
+<strong>Learning the front element(myPreciousVector.front())</strong> : O(1) <br />
+<strong>Poping an element(myPreciousVector.pop())</strong> : O(1) <br /></p>
+<h3>Problem Analysis and Solution</h3>
+<p>In this problem, we have a starting point, an ending point, and move style. The question asks us to show the path. Therefore, we have to move and store our path. This thought rakes another crucial topic up. It is called Breadth First Search(BFS).</p>
+<p>BFS is used for traversing through a graph. The main data structure for BFS is a queue. The main idea for BFS is going to every possible node from the current node one by one. Our graph in this example is chess board. Our edges in chessboard are the nodes that we can reach from the current node.</p>
+<p align="center">
+<img src="https://i.hizliresim.com/0zj4MY.png">
+</p>
+
+<p align="center">
+<em><b>Figure 2:</b> The representation  of the BFS Logic</em>
+</p>
+
+<p>In the figure-2, the red square represents the current location. Therefore, It can follow the orange arrows according to question. After reaching the green square 1, the path is shown in orange arrows. The following code shows the BFS implementation. Before reading the code, <strong>be sure that you understood the question.</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">// Creating a Node struct for representing, where we are in each iteration.</span>
+<span class="k">struct</span> <span class="n">Node</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">{};</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">{};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">currentPath</span><span class="p">;</span>
+<span class="p">}</span><span class="n">node</span><span class="p">;</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">bfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">iSI</span><span class="p">,</span> <span class="kt">int</span> <span class="n">jSI</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">currentPath</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">iE</span><span class="p">,</span> <span class="kt">int</span> <span class="n">jE</span><span class="p">){</span>
+    <span class="c1">// Creating the main structure queue, and pushing it to our current node.</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+    <span class="n">node</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">iSI</span><span class="p">,</span> <span class="n">node</span><span class="p">.</span><span class="n">j</span> <span class="o">=</span> <span class="n">jSI</span><span class="p">,</span> <span class="n">node</span><span class="p">.</span><span class="n">currentPath</span> <span class="o">=</span> <span class="n">currentPath</span><span class="p">;</span>
+    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="p">);</span>
+
+    <span class="c1">// Creating visited vector is really critical. We do not want to step that node, that we have been before</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">visited</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">4</span><span class="p">),</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="n">visited</span><span class="p">[</span><span class="n">iSI</span><span class="p">][</span><span class="n">jSI</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// We want to check every node. Therefore, we should loop until q is empty. Remember we are pushing nodes to our queue.</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+        <span class="c1">// Learning the current node</span>
+        <span class="n">Node</span> <span class="n">currentNode</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">iS</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">.</span><span class="n">i</span><span class="p">,</span> <span class="n">jS</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">.</span><span class="n">j</span><span class="p">;</span>
+
+        <span class="c1">// If we are in the ending point, return the path.  </span>
+        <span class="k">if</span><span class="p">(</span><span class="n">iS</span> <span class="o">==</span> <span class="n">iE</span> <span class="o">&amp;&amp;</span> <span class="n">jS</span> <span class="o">==</span> <span class="n">jE</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">currentNode</span><span class="p">.</span><span class="n">currentPath</span><span class="p">;</span>
+
+        <span class="c1">// We have 6 if statements next for representing the moves, that we can do.</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">iS</span><span class="o">-</span><span class="mi">2</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">jS</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="n">jS</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="c1">// Creating a new node with the current node</span>
+            <span class="n">Node</span> <span class="n">cNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">i</span> <span class="o">-=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="c1">// Saving the path progress</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">currentPath</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="s">&quot;UL&quot;</span><span class="p">);</span>
+            <span class="c1">// Marking the node as visited</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="n">jS</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="c1">// Pushing new node to queue</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">cNode</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">iS</span><span class="o">-</span><span class="mi">2</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">jS</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="n">jS</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">Node</span> <span class="n">cNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">i</span> <span class="o">-=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">currentPath</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="s">&quot;UR&quot;</span><span class="p">);</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="n">jS</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">cNode</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">jS</span><span class="o">+</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="p">][</span><span class="n">jS</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">Node</span> <span class="n">cNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">j</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">currentPath</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="s">&quot;R&quot;</span><span class="p">);</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="p">][</span><span class="n">jS</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">cNode</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">iS</span><span class="o">+</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">jS</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">jS</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">Node</span> <span class="n">cNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">currentPath</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="s">&quot;LR&quot;</span><span class="p">);</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">jS</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">cNode</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">iS</span><span class="o">+</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">jS</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">jS</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">Node</span> <span class="n">cNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">currentPath</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="s">&quot;LL&quot;</span><span class="p">);</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">jS</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">cNode</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">jS</span><span class="o">-</span><span class="mi">2</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="p">][</span><span class="n">jS</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">Node</span> <span class="n">cNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">j</span> <span class="o">-=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">cNode</span><span class="p">.</span><span class="n">currentPath</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="s">&quot;L&quot;</span><span class="p">);</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">iS</span><span class="p">][</span><span class="n">jS</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">cNode</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{};</span>
+<span class="p">}</span>
+
+<span class="c1">// We can think it as the main function.</span>
+<span class="c1">// We have the starting point, the ending point, and chess board size as inputs</span>
+<span class="kt">void</span> <span class="n">printShortestPath</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i_start</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j_start</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i_end</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j_end</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Running the bfs algorithm and taking the path from it.</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">thePath</span> <span class="o">=</span> <span class="n">bfs</span><span class="p">(</span><span class="n">i_start</span><span class="p">,</span> <span class="n">j_start</span><span class="p">,</span> <span class="p">{},</span> <span class="n">n</span><span class="p">,</span> <span class="n">i_end</span><span class="p">,</span> <span class="n">j_end</span><span class="p">);</span>
+
+    <span class="c1">// If the path is empty, we say there is no path from starting point to ending point.</span>
+    <span class="c1">// If the path is not empty, we print every operation according to the problem.</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">thePath</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Impossible&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">thePath</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">thePath</span><span class="p">)</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://sadikekin.github.io/tag/algorithm.html">algorithm</a>
+      <a href="https://sadikekin.github.io/tag/bfs.html">bfs</a>
+      <a href="https://sadikekin.github.io/tag/chess.html">chess</a>
+      <a href="https://sadikekin.github.io/tag/hackerrank.html">HackerRank</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sadikekin-2';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  2018</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tükürdüklerim ",
+  "url" : "https://sadikekin.github.io",
+  "image": "https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o",
+  "description": "Sadik Ekin Ozbay's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>
