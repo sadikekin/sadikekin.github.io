@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?9ukd8d">
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+    <link rel="icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#f2e6e6">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#f2e6e6">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#f2e6e6">
+
+<meta name="author" content="Sadik Ekin Ozbay" />
+<meta name="description" content="Basic introduction to Functional Programming with Haskell" />
+<meta name="keywords" content="haskell, fp, guards, tail recursive">
+
+<meta property="og:site_name" content="Tükürdüklerim"/>
+<meta property="og:title" content="Guards/Tail Recursive in Haskell"/>
+<meta property="og:description" content="Basic introduction to Functional Programming with Haskell"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://sadikekin.github.io/Haskell - Functional Programming - Guards, Tail Recursive.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-05-24 10:20:00+03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://sadikekin.github.io/author/sadik-ekin-ozbay.html">
+<meta property="article:section" content="Haskell"/>
+<meta property="article:tag" content="haskell"/>
+<meta property="article:tag" content="fp"/>
+<meta property="article:tag" content="guards"/>
+<meta property="article:tag" content="tail recursive"/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o">
+
+  <title>Tükürdüklerim &ndash; Guards/Tail Recursive in Haskell</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://sadikekin.github.io">
+        <img src="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o" alt="Sadik Ekin Ozbay" title="Sadik Ekin Ozbay">
+      </a>
+      <h1><a href="https://sadikekin.github.io">Sadik Ekin Ozbay</a></h1>
+
+<p>Software Engineer</p>
+
+      <ul class="social">
+        <li><a class="" href="https://github.com/sadikekin" target="_blank"><i class="socicon-github"></i></a></li>
+        <li><a class="" href="https://www.hackerrank.com/Ozbaysa" target="_blank"><i class="socicon-hackerrank"></i></a></li>
+        <li><a class="" href="https://www.linkedin.com/in/sadık-ekin-özbay/" target="_blank"><i class="socicon-linkedin"></i></a></li>
+        <li><a class="" href="https://www.quora.com/profile/Sadık-Ekin-Özbay" target="_blank"><i class="socicon-quora"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://sadikekin.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="Haskell - Functional Programming - Guards, Tail Recursive">Guards/Tail Recursive in Haskell</h1>
+    <p>
+          Posted on 24 May, 2018 in <a href="https://sadikekin.github.io/category/haskell.html">Haskell</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><em>Note: If you want to try coding examples, all you need to install ghci. Then load our functions into the ghci console as modules.</em></p>
+<h2>What is functional programming(FP)?</h2>
+<p>Functional programming is a programming paradigm. The aim is creating code blocks by using pure functions. The pure function has two properties;
+1- Given the same inputs to the function always returns the same output
+2- The function does not have side effects. By side effects, I mean it does not print something to console etc...</p>
+<h2>How to define functions in haskell?</h2>
+<p>Let's look at the following code.</p>
+<h4>Functions without parameter</h4>
+<div class="highlight"><pre><span></span> <span class="c1">-- This is the definition of the function.</span>
+<span class="nf">returnTenFunction</span> <span class="ow">::</span> <span class="kt">Int</span>
+ <span class="c1">-- This part is the function itself.</span>
+<span class="nf">returnTenFunction</span> <span class="ow">=</span> <span class="mi">10</span>
+</pre></div>
+
+
+<p>As we can see in the above first we define our function type. Later we define our functions job.</p>
+<h4>Functions with parameter</h4>
+<div class="highlight"><pre><span></span> <span class="c1">-- This is the definition of the function that takes an integer and returns an integer</span>
+<span class="nf">multiplyByTenFunction</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+ <span class="c1">-- This part is the function itself.</span>
+<span class="nf">multiplyByTenFunction</span> <span class="n">value</span> <span class="ow">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">value</span>
+
+<span class="c1">-- We just need to write multiplyByTenFunction 6 in GHCI for calling this function</span>
+</pre></div>
+
+
+<h2>Infix/prefix in Haskell</h2>
+<p>Almost everything in Haskell is a function. We can use them as infix or prefix. Let us see the following example.</p>
+<div class="highlight"><pre><span></span><span class="nf">modPrefixByTen</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="nf">modPrefixByTen</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">mod</span> <span class="n">value</span> <span class="mi">10</span>
+
+<span class="nf">modInFixByTen</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="nf">modInFixByTen</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">value</span> <span class="p">`</span><span class="n">mod</span><span class="p">`</span> <span class="mi">10</span>
+
+
+<span class="nf">sumPrefixByTen</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="nf">sumPrefixByTen</span> <span class="n">value</span> <span class="ow">=</span> <span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="n">value</span> <span class="mi">10</span>
+
+<span class="nf">sumInFixByTen</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="nf">sumInFixByTen</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">10</span>
+
+<span class="c1">-- We just need to write multiplyByTenFunction 6 in GHCI for calling this function</span>
+</pre></div>
+
+
+<h2>Guards in Haskell</h2>
+<p>How do we define if else statement in the function? Let us see.</p>
+<div class="highlight"><pre><span></span> <span class="c1">-- This is the definition of the function that takes an integer and returns an boolean</span>
+<span class="nf">isItTenFunction</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span>
+ <span class="c1">-- This part is the function itself.</span>
+<span class="nf">isItTenFunction</span> <span class="n">value</span>
+  <span class="o">|</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">10</span>   <span class="ow">=</span> <span class="kt">True</span>
+  <span class="o">|</span> <span class="n">otherwise</span>     <span class="ow">=</span> <span class="kt">False</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span> <span class="c1">-- This is the definition of the function that takes two doubles and returns a string</span>
+<span class="nf">isBigFunction</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+ <span class="c1">-- This part is the function itself.</span>
+<span class="nf">isBigFunction</span> <span class="n">valueOne</span> <span class="n">valueTwo</span>
+  <span class="o">|</span> <span class="n">valueOne</span> <span class="o">&lt;</span> <span class="n">valueTwo</span>   <span class="ow">=</span> <span class="s">&quot;Small&quot;</span>
+  <span class="o">|</span> <span class="n">valueOne</span> <span class="o">==</span> <span class="n">valueTwo</span>  <span class="ow">=</span> <span class="s">&quot;Equal&quot;</span>
+  <span class="o">|</span> <span class="n">otherwise</span>             <span class="ow">=</span> <span class="s">&quot;Big&quot;</span>
+</pre></div>
+
+
+<p>We have <strong>|</strong> symbol in the above. We can think it as an if symbol. It checks every condition and acts according to it.</p>
+<h2>Error in Haskell</h2>
+<div class="highlight"><pre><span></span><span class="nf">divFunction</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">divFunction</span> <span class="n">valueOne</span> <span class="n">valueTwo</span>
+  <span class="o">|</span> <span class="n">valueTwo</span> <span class="o">==</span> <span class="mi">0</span>   <span class="ow">=</span> <span class="ne">error</span> <span class="s">&quot;Division by zero&quot;</span>
+  <span class="o">|</span> <span class="n">otherwise</span>       <span class="ow">=</span> <span class="p">(</span><span class="o">/</span><span class="p">)</span> <span class="n">valueOne</span> <span class="n">valueTwo</span>
+</pre></div>
+
+
+<h2>Tail Recursion in Haskell</h2>
+<div class="highlight"><pre><span></span> <span class="c1">-- This is the implementation of factorial in Haskell.</span>
+<span class="nf">factorial</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="nf">factorial</span> <span class="n">n</span>
+ <span class="o">|</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span>       <span class="ow">=</span> <span class="ne">error</span> <span class="s">&quot;Negative&quot;</span>
+ <span class="o">|</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span>      <span class="ow">=</span> <span class="mi">1</span>
+ <span class="o">|</span> <span class="n">otherwise</span>   <span class="ow">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span> <span class="c1">-- This is the implementation of tail recursive factorial in Haskell.</span>
+<span class="nf">factorial</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="nf">factorial</span> <span class="n">n</span> <span class="ow">=</span> <span class="n">factorialHelper</span> <span class="mi">1</span> <span class="n">n</span>
+   <span class="kr">where</span>
+     <span class="n">factorialHelper</span> <span class="n">value</span> <span class="n">n</span>
+       <span class="o">|</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span>       <span class="ow">=</span> <span class="ne">error</span> <span class="s">&quot;Negative&quot;</span>
+       <span class="o">|</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span>      <span class="ow">=</span> <span class="n">value</span>
+       <span class="o">|</span> <span class="n">otherwise</span>   <span class="ow">=</span> <span class="n">factorialHelper</span> <span class="p">(</span><span class="n">value</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<p>We basically calculate the value in every function call and return value all in once at tail recursive.
+<strong>where</strong> allows us to define local functions. For example, factorialHelper function is seen only by factorial function.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://sadikekin.github.io/tag/haskell.html">haskell</a>
+      <a href="https://sadikekin.github.io/tag/fp.html">fp</a>
+      <a href="https://sadikekin.github.io/tag/guards.html">guards</a>
+      <a href="https://sadikekin.github.io/tag/tail-recursive.html">tail recursive</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sadikekin-2';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  2018</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tükürdüklerim ",
+  "url" : "https://sadikekin.github.io",
+  "image": "https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o",
+  "description": "Sadik Ekin Ozbay's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>
