@@ -238,7 +238,7 @@ a^5 = a^2 * a^2 * a^1 \\
 a^2 = a^1 * a^1 \\
 $$</div>
 <p>
-</brb
+</br>
 We only need to calculate a<sup>2</sup> and a<sup>5</sup>. After our calculation, we just need to multiply it by itself.</p>
 <h5>n = 21</h5>
 <div class="math">$$
@@ -278,7 +278,7 @@ Therefore, we can write following python code after this knowledge. Plus, it run
 
 <span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="c1"># Return our primary matrix([[1,1],[1,0]]) when we hit the bottom of the recurrence.</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span><span class="n">i</span>
         <span class="k">return</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 
     <span class="c1"># In each call assign returned value to K.</span>
