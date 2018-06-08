@@ -264,6 +264,7 @@ We only need to calculate a<sup>2</sup>, a<sup>5</sup>, a<sup>11</sup> and a<sup
 </br>
 Therefore, we can write following python code after this knowledge. Plus, it runs in O(log<sub>2</sub>(N)) and this is the best side of this algorithm.</p>
 <div class="highlight"><pre><span></span><span class="c1"># This function makes the initial call for the power function.</span>
+<span class="c1"># This function makes the initial call for the power function.</span>
 <span class="k">def</span> <span class="nf">fibFinder</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
@@ -277,17 +278,17 @@ Therefore, we can write following python code after this knowledge. Plus, it run
 
 
 <span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="c1"># Return our primary matrix([[1,1],[1,0]]) when we hit the bottom of the recurrence.</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span><span class="n">i</span>
+    <span class="c1"># Return our primary matrix([[1,1],[1,0]]) when we hit the bottom of the recurence.</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 
-    <span class="c1"># In each call assign returned value to K.</span>
+    <span class="c1"># In each call assign returned value to K</span>
     <span class="n">K</span> <span class="o">=</span> <span class="n">power</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
 
-    <span class="c1"># Multiply K by itself.</span>
+    <span class="c1"># Multiply K by itself</span>
     <span class="n">K</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 
-    <span class="c1"># We might have n value like 11. Therefore, we need to multiply it one more time with [[1, 1], [1, 0]].</span>
+    <span class="c1"># If we consider</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">K</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
     <span class="k">return</span> <span class="n">K</span>
@@ -300,6 +301,8 @@ Therefore, we can write following python code after this knowledge. Plus, it run
     <span class="n">c</span> <span class="o">=</span> <span class="n">N</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">N</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">N</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">N</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="p">[[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">]]</span>
+
+<span class="c1"># print(fibFinder(100000))</span>
 </pre></div>
 
 
