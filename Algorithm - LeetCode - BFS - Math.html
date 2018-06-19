@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?9ukd8d">
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://sadikekin.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+    <link rel="icon" href="https://image.flaticon.com/icons/svg/600/600388.svg" type="image/x-icon">
+
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#f2e6e6">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#f2e6e6">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#f2e6e6">
+
+<meta name="author" content="Sadik Ekin Ozbay" />
+<meta name="description" content="We will analyze two questions from LeetCode" />
+<meta name="keywords" content="algorithm, LeetCode, BFS, Math">
+
+<meta property="og:site_name" content="Tükürdüklerim"/>
+<meta property="og:title" content="Analysis of Two LeetCode Questions"/>
+<meta property="og:description" content="We will analyze two questions from LeetCode"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://sadikekin.github.io/Algorithm - LeetCode - BFS - Math.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-06-19 21:50:00+03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://sadikekin.github.io/author/sadik-ekin-ozbay.html">
+<meta property="article:section" content="Algorithm"/>
+<meta property="article:tag" content="algorithm"/>
+<meta property="article:tag" content="LeetCode"/>
+<meta property="article:tag" content="BFS"/>
+<meta property="article:tag" content="Math"/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o">
+
+  <title>Tükürdüklerim &ndash; Analysis of Two LeetCode Questions</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://sadikekin.github.io">
+        <img src="https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o" alt="Sadik Ekin Ozbay" title="Sadik Ekin Ozbay">
+      </a>
+      <h1><a href="https://sadikekin.github.io">Sadik Ekin Ozbay</a></h1>
+
+<p>Software Engineer</p>
+
+      <ul class="social">
+        <li><a class="" href="https://github.com/sadikekin" target="_blank"><i class="socicon-github"></i></a></li>
+        <li><a class="" href="https://www.hackerrank.com/Ozbaysa" target="_blank"><i class="socicon-hackerrank"></i></a></li>
+        <li><a class="" href="https://www.linkedin.com/in/sadık-ekin-özbay/" target="_blank"><i class="socicon-linkedin"></i></a></li>
+        <li><a class="" href="https://www.quora.com/profile/Sadık-Ekin-Özbay" target="_blank"><i class="socicon-quora"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://sadikekin.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="Algorithm - LeetCode - BFS - Math">Analysis of Two LeetCode Questions</h1>
+    <p>
+          Posted on 19 June, 2018 in <a href="https://sadikekin.github.io/category/algorithm.html">Algorithm</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Hello there,
+We are going to analyze two interesting questions from LeetCode.</p>
+<h3>Unique Paths</h3>
+<p>We will investigate <a href="https://leetcode.com/problems/unique-paths/description/">this</a> question in this section. Therefore, instead of directly jumping into solution, read and try to solve by yourself.</p>
+<p>We will solve it by using permutation. Let's call starting point (0,0) for the robot and (m-1,n-1) for the end mark. Therefore we, as a robot, need to go n-1 times down and m-1 times right. The ordering of these right and down does matter. Hence, we just need to find how do we order them.</p>
+<p>For example, let call n is equal to 5 and m is equal to 3. We have a 3x5 grid. We need to go 2 times right and 4 four times down for reaching the end mark. We can go as follows
+<p align="center">
+RRDDDD or
+DRDRDD or
+RDDDDR and many more
+....
+</p>
+All of these paths(different ordering of m-1 times R and n-1 times D) in the above will give us the same output. However, each of these paths is unique. We just need to find how do we order R's and D's. This is the part where permutation comes into play. Following formula gives us the how many different ordering, that we can get from m-1 times R and n-1 times D.
+</p>
+<div class="math">$$
+\frac{(n-1+m-1)!}{(n-1)! * (m-1)!}
+$$</div>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">k</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">fac</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">uniquePaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fac</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fac</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">fac</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>Another solution would be BFS. We can just go in each node and keep track of paths. Nevertheless, we will not solve it by using BFS. If you like to challenge yourself, go for it.</p>
+<h3>Max Area of Island</h3>
+<p>We will investigate <a href="https://leetcode.com/problems/max-area-of-island/description/">this</a> question in this section. Therefore, instead of directly jumping into solution, read and try to solve by yourself.</p>
+<p>This question asks the largest number of consecutive ones in a matrix. Hence, we need to implement <a href="https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/">BFS</a> method.</p>
+<p>We shall start BFSing when the number in the matrix is 1. We will find every consecutive one and count them by using BFS. The important part in here is changing array while running BFS. If we don't change visited ones with zeros, we will calculate same consecutive ones again and again. Changing visited ones with zeros prevents this situation.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="c1">// We need to pass the address of the grid for changing visited ones.</span>
+    <span class="kt">int</span> <span class="n">bfs</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">grid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">iInput</span><span class="p">,</span> <span class="kt">int</span> <span class="n">jInput</span><span class="p">){</span>   
+        <span class="n">queue</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">q</span><span class="p">;</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">iInput</span><span class="p">,</span><span class="n">jInput</span><span class="p">));</span>
+        <span class="n">grid</span><span class="p">[</span><span class="n">iInput</span><span class="p">][</span><span class="n">jInput</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="c1">// While q is not empty try to go left, right, bottom and up.</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+            <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">currentNode</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">currentNode</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+            <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+
+            <span class="c1">// Try to go up</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)),</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+            <span class="c1">// Try to go down</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="p">.</span><span class="n">size</span><span class="p">())</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)),</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+            <span class="c1">// Try to go left</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+            <span class="c1">// Try to go right</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">())</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)),</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">counter</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">maxAreaOfIsland</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">grid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">maxVal</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="c1">// We need to run bfs function if the number in the matrix is one.</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">grid</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">maxVal</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">maxVal</span><span class="p">,</span> <span class="n">bfs</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="n">maxVal</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://sadikekin.github.io/tag/algorithm.html">algorithm</a>
+      <a href="https://sadikekin.github.io/tag/leetcode.html">LeetCode</a>
+      <a href="https://sadikekin.github.io/tag/bfs.html">BFS</a>
+      <a href="https://sadikekin.github.io/tag/math.html">Math</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sadikekin-2';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  2018</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tükürdüklerim ",
+  "url" : "https://sadikekin.github.io",
+  "image": "https://lh3.googleusercontent.com/aV4qQ9xH_vGvYpihieB2MAHX68IWfEk4M0GyLoJWU-kPOCkyl7ErZI7rdia2hBOZx2o",
+  "description": "Sadik Ekin Ozbay's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>
